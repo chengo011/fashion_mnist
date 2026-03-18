@@ -3,6 +3,7 @@ from tensorflow.keras.datasets import fashion_mnist
 from config import CLASS_NAMES
 
 def load_data():
+    (X_train, y_train), (X_test, y_test) = fashion_mnist.load_data()
     return (X_train, y_train), (X_test, y_test)
 
 def normalize(X_train, X_test):
