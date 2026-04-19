@@ -16,7 +16,6 @@ X_train_split, X_val, y_train_split, y_val = train_test_split(
 
 
 #Test-Code to determine the number of PCA components needed to retain variance
-"""
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import os
@@ -39,8 +38,7 @@ print(f"Plot saved: {PLOTS_DIR}/pca_explained_variance.png")
 
 n_components = np.argmax(cumulative_variance >= 0.95) + 1
 print(f"\nComponents for 95% Varaince: {n_components}")
-print(f"Explained Variance with {n_components} Components: {cumulative_variance[n_components - 1]:.4f}") 
-"""
+print(f"Explained Variance with {n_components} Components: {cumulative_variance[n_components - 1]:.4f}")
 
 def pca_fit(X_train, n_components):
     mean = np.mean(X_train, axis=0)
@@ -73,10 +71,10 @@ svm = SVC(kernel='rbf', C=1.0, gamma='scale', random_state=RANDOM_STATE)
 svm.fit(X_train_pca, y_train_split)
 
 #Accuracy on Test-Set
-"""val_accuracy = svm.score(X_val_pca, y_val)
-print(f"Validation-Accuracy: {val_accuracy:.4f}")"""
+val_accuracy = svm.score(X_val_pca, y_val)
+print(f"Validation-Accuracy: {val_accuracy:.4f}")
 
-"""from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.metrics import confusion_matrix, classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
@@ -92,7 +90,7 @@ print(f"\nTest-Accuracy: {test_accuracy:.4f}")
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred, target_names=CLASS_NAMES))
 
-# Confusion Matrix
+#Confusion Matrix
 cm = confusion_matrix(y_test, y_pred)
 
 plt.figure(figsize=(10, 8))
@@ -105,4 +103,4 @@ plt.title(f'Confusion Matrix – PCA + SVM (Accuracy: {test_accuracy:.2%})')
 plt.tight_layout()
 plt.savefig(os.path.join(PLOTS_DIR, 'pca_svm_confusion_matrix.png'), dpi=150)
 plt.close()
-print(f"Plot saved: {PLOTS_DIR}/pca_svm_confusion_matrix.png")"""
+print(f"Plot saved: {PLOTS_DIR}/pca_svm_confusion_matrix.png")
